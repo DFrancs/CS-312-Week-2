@@ -10,6 +10,19 @@ app.get("/", function(req,res){
 	res.sendFile(__dirname + "/index.html");
 });
 
+// Handle GET request for /bmicalculator route
+app.get('/bmicalculator', function(req, res) {
+    res.sendFile(__dirname + '/bmiCalculator.html');
+});
+
+// Handle POST request for /bmicalculator route
+app.post('/bmicalculator', function(req, res) {
+    const weight = parseFloat(req.body.weight);
+    const height = parseFloat(req.body.height);
+    const bmi = weight / (height * height);
+    res.send(`Your BMI is ` + bmi);
+});
+
 app.post("/", function(req, res){
 
 	var num1 = Number(req.body.n1);
